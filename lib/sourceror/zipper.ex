@@ -618,6 +618,6 @@ defmodule Sourceror.Zipper do
   """
   def within(%Z{} = zipper, fun) when is_function(fun, 1) do
     updated = zipper |> subtree() |> fun.() |> top()
-    into(updated, zipper)
+    into(updated, updated.supertree || zipper)
   end
 end
